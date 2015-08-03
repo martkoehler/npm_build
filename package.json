@@ -1,0 +1,25 @@
+{
+  "name": "jsbuild",
+  "version": "0.1.0",
+  "description":  "A sample node javascript build",
+  "author": "Mart Köhler <mart.koehler@openknowledge.de>",
+  "scripts": {
+    "build": "npm run clean && npm install && npm run lint && npm run copy && npm run replace",
+    "clean": "rm -rf dist",
+    "clean_modules": "rm -rf node_modules",
+    "copy": "mkdir dist && cp html/index.html dist/index.html",
+    "lint": " jslint js/*.js",
+    "replace": "useref dist/index.html dist/index.html --js uglify",
+    "server": "npm run build && http-server ./dist/ -o"
+  },
+  "dependencies": {
+    "jslint": "0.9.1",
+    "useref-file": "0.2.1"
+  },
+  "devDependencies": {
+    "http-server": "0.8.0"
+  },
+  "private": true,
+  "analyze": true,
+  "license": "MIT"
+}
